@@ -19,7 +19,7 @@ public class Operation {
         this.operateur = operateur;
     }
 
-    public int printOperation(){
+    public int printOperationAndGetPlayerResult(){
         Scanner inputResultat = new Scanner(System.in);
         if (this.operateur.equals("-") && this.nombre2 > this.nombre1) {
             System.out.print("\n" + this.nombre2 + " " + this.operateur + " " + this.nombre1 + " = ");
@@ -32,6 +32,7 @@ public class Operation {
             this.resultPlayer = Integer.parseInt(resultat_str);
         }catch (Exception e) {
             System.out.println("ERREUR: Vous devez entrer un nombre");
+            return printOperationAndGetPlayerResult();
         }
         return this.resultPlayer;
     }

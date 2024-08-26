@@ -4,13 +4,11 @@ public class Main {
     public static void main (String[] args) {
 
         final int operationsNumber = 3; // Numbers of operations
+        int score = 0;
 
-
-        // Create score && menu instances
-
+        // Create menu instances
 
         Menu menu = new Menu();
-//        Score score = new Score(resultIsCorrect, operationsNumber);
 
         // Print Choice Operation Menu && Choice Difficulty Menu
         String operationType = menu.operationUserChoice();
@@ -30,18 +28,27 @@ public class Main {
                 }
             }
 
+            // Create new operation
             Operation operation = new Operation(n1, n2, operationType);
 
-            int playerResult = operation.printOperation();
+            // print operation and get the player result
+            int playerResult = operation.printOperationAndGetPlayerResult();
 
+            // Calculate correct result
             int correctResult = operation.calcultate();
-            Score score = new Score(playerResult, operationsNumber, correctResult);
-            score.calculteScore();
 
+            // Compare player result and correct result to calcultate score
+            if(playerResult == correctResult){
+                System.out.println("Réponse correcte");
+                score ++;
+            }else {
+                System.out.println("Réponse incorrecte");
+            }
         }
-        score.printScoreAndEvaluation();
-
+        // Print total score
+        System.out.println("\n----- Votre score : " + score + "/" + operationsNumber + " -----");
     }
+
 
     // Function generating random number between min and max
     public static int generationRandomNumber(int difficulte) {
