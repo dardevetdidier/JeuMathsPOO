@@ -4,24 +4,29 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public String operationUserChoice(){
-        int choixOperationInt = 0;
+    public int operationUserChoice(){
+        int operationChoiceInt = 0;
 
-        System.out.println("\nQuelle operation souhaitez vous effectuer ?");
-        System.out.println("1: Addition");
-        System.out.println("2: Soustraction");
-        System.out.println("3: Multiplication");
-        System.out.println("4: Division");
-        System.out.println("5: Toutes");
+        String menuOperrationChoice = """
+                
+                Choisissez une opération
+                    1: Addition
+                    2: Soustraction
+                    3: Multiplication
+                    4: Division
+                    5: Aléatoire
+                """;
+        System.out.println(menuOperrationChoice);
+
 
         Scanner operation = new Scanner(System.in);
         System.out.print("Votre choix (entre 1 et 5): ");
-        String choixOperationStr = operation.nextLine();
+        String operationChoiceStr = operation.nextLine();
 
         try {
-            choixOperationInt = Integer.parseInt(choixOperationStr);
+            operationChoiceInt = Integer.parseInt(operationChoiceStr);
 
-            if (choixOperationInt < 1 || choixOperationInt > 5) {
+            if (operationChoiceInt < 1 || operationChoiceInt > 5) {
                 System.out.println("ERREUR : Vous devez entrer un nombre entre 1 et 5");
                 return operationUserChoice();
             }
@@ -29,26 +34,19 @@ public class Menu {
             System.out.println("ERREUR : Vous devez entrer un nombre entre 1 et 5");
             return operationUserChoice();
         }
-        String[] operateurs = {"+", "-", "x", "/"};
-        String operateur;
-        switch(choixOperationInt){
-            case 1 -> operateur = operateurs[0];
-            case 2 -> operateur = operateurs[1];
-            case 3 -> operateur = operateurs[2];
-            case 4 -> operateur = operateurs[3];
-            case 5 -> operateur = operateurs[(int)Math.floor(Math.random() * (2 - 1 + 1) + 1)];
-            default -> operateur = "";
-        };
-        return operateur;
+        return operationChoiceInt;
     }
 
     public int difficultyUserChoice() {
         int difficultyChoiceInt = 0;
-
-        System.out.println("\nDifficulté :");
-        System.out.println("1: Facile :");
-        System.out.println("2: Moyenne :");
-        System.out.println("3: Difficile :");
+        String menuDifficultyChoice = """
+             
+             Choisir une difficulté
+                1: Facile
+                2: Moyenne
+                3: Difficile
+             """;
+        System.out.println(menuDifficultyChoice);
 
         Scanner difficulty = new Scanner(System.in);
         System.out.print("Votre choix (entre 1 et 3) : ");
@@ -67,6 +65,4 @@ public class Menu {
 
         return difficultyChoiceInt;
     }
-
-
 }
